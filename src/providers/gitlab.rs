@@ -95,6 +95,7 @@ impl super::UserProvider for Gitlab {
                 )
                 .json(&GitlabImpersonationTokenRequest {
                     name: env!("CARGO_PKG_NAME"),
+                    expires_at: "2024-01-01",
                     scopes: vec!["api"],
                 })
                 .send()
@@ -273,6 +274,7 @@ impl GitlabCratePath {
 #[derive(Serialize)]
 pub struct GitlabImpersonationTokenRequest {
     name: &'static str,
+    expires_at: &'static str,
     scopes: Vec<&'static str>,
 }
 
